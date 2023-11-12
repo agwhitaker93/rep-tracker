@@ -1,0 +1,16 @@
+.exercise-input {
+    border: 0;
+    padding: 0;
+    margin: 10px;
+    background: transparent;
+    font-size: 24px;
+    text-align: center;
+}
+
+.rep-input {
+    padding: 0;
+    margin: 10px;
+    background: transparent;
+    font-size: 18px;
+    text-align: center;
+}
