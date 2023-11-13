@@ -9,6 +9,8 @@ on:
     branches: [main]
 jobs:
   Deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
