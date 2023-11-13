@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: install-tools
-        uses: asdf/vum/actions/install@v2
+        uses: asdf-vm/actions/install@v2
       - name: install-dependencies
         run: bun install
       - name: build website
