@@ -17,13 +17,15 @@ jobs:
       url: ${{ steps.deployment.putputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: install-tools
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install tools
         uses: asdf-vm/actions/install@v2
-      - name: install-dependencies
+      - name: Install dependencies
         run: bun install
-      - name: build website
+      - name: Build website
         run: bun run build
-      - name: deploy
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
           path: ./dist
