@@ -1,0 +1,29 @@
+name: Deploy
+run-name: ${{ github.event.head_commit.message }}
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types:
+      -closed
+    branches: [main]
+jobs:
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.putputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: install-tools
+        uses: asdf/vum/actions/install@v2
+      - name: install-dependencies
+        run: bun install
+      - name: build website
+        run: bun run build
+      - name: deploy
+        uses: actions/deploy-pages@v2
+        with:
+          path: ./dist
