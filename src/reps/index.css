@@ -14,3 +14,19 @@
     font-size: 18px;
     text-align: center;
 }
+
+.exercise {
+    margin-bottom: 50px;
+}
+
+.exercise-input {
+    width: 250px;
+}
+
+.rep-input {
+    width: 245px;
+}
+
+.del-button {
+    padding: 0.3em 0.6em;
+}
