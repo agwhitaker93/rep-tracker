@@ -11,6 +11,8 @@ jobs:
   Deploy:
     permissions:
       contents: write
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,6 +24,9 @@ jobs:
       - name: Build website
         run: bun run build
       - name: Publish Artifact
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/upload-pages-artifact@v2
         with:
-          folder: dist
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
