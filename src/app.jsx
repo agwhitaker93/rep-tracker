@@ -1,5 +1,6 @@
 import { useEffect } from 'preact/hooks'
 import { signal } from '@preact/signals'
+import logo from '/1F3CB.svg'
 import { appState, saveState, stateToCsv } from './state'
 import { Reps } from './reps'
 import { Footer } from './footer'
@@ -22,6 +23,7 @@ export function App() {
 
   return (
     <>
+      <img src={logo} class="logo" alt="logo" />
       <Reps exercises={appState.exercises}/>
       <br/>
       <a href={objectUrl} download="exercises.csv">Download</a>
