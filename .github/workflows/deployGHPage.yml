@@ -1,12 +1,6 @@
-name: Deploy
-run-name: ${{ github.event.head_commit.message }}
+name: Deploy GitHub Page
 on:
-  push:
-    branches: [main]
-  pull_request:
-    types:
-      - closed
-    branches: [main]
+  workflow_call:
 jobs:
   Deploy:
     permissions:

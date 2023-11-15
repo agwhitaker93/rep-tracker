@@ -1,0 +1,14 @@
+name: Merge
+run-name: ${{ github.event.head_commit.message }}
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types:
+      - closed
+    branches: [main]
+jobs:
+  DeployGHPage:
+    uses: ./.github/workflows/deployGHPage.yml
+  BuildTauri:
+    uses: ./.github/workflows/buildTauri.yml
