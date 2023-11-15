@@ -9,6 +9,14 @@ on:
     branches: [main]
 jobs:
   DeployGHPage:
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     uses: ./.github/workflows/deployGHPage.yml
   BuildTauri:
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     uses: ./.github/workflows/buildTauri.yml
