@@ -7,17 +7,17 @@ jobs:
       contents: write
     strategy:
       matrix:
-        include:
-          - { os: ubuntu-20.04, shell: bash },
-          - { os: windows-latest, shell: msys2 },
-          - { os: macos-latest, shell: bash }
+        sys:
+          { os: ubuntu-20.04, shell: bash },
+          { os: windows-latest, shell: msys2 },
+          { os: macos-latest, shell: bash }
     defaults:
       run:
-        shell: ${{ matrix.shell }} {0}
-    runs-on: ${{ matrix.os }}
+        shell: ${{ matrix.sys.shell }} {0}
+    runs-on: ${{ matrix.sys.os }}
     steps:
       - name: Setup MSYS2
-        if: matrix.os == 'windows-latest'
+        if: matrix.sys.os == 'windows-latest'
         uses: msys2/setup-msys2@v2
         with:
           update: true
