@@ -17,6 +17,4 @@ jobs:
   BuildTauri:
     permissions:
       contents: write
-      pages: write
-      id-token: write
     uses: ./.github/workflows/buildTauri.yml
