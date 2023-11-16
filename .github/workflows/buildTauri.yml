@@ -7,9 +7,23 @@ jobs:
       contents: write
     strategy:
       matrix:
-        platform: [ubuntu-20.04, windows-latest, macos-latest]
-    runs-on: ${{ matrix.platform }}
+        include:
+          - { os: ubuntu-20.04, shell: bash },
+          - { os: windows-latest, shell: msys2 },
+          - { os: macos-latest, shell: bash }
+    defaults:
+      run:
+        shell: ${{ matrix.shell }} {0}
+    runs-on: ${{ matrix.os }}
     steps:
+      - name: Setup MSYS2
+        if: matrix.os == 'windows-latest'
+        uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            curl
+            git
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install tools
