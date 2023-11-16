@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'preact/hooks'
 import { signal } from '@preact/signals'
-import { invoke } from "@tauri-apps/api/tauri";
 import { save, message } from '@tauri-apps/api/dialog'
 import { writeTextFile } from '@tauri-apps/api/fs'
 import logo from '/1F3CB.svg'
@@ -13,13 +12,6 @@ import './app.css'
 export function App() {
   const objectUrl = signal('')
   const stateCsv = signal('')
-
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name: "John Doe" }));
-  }
 
   useEffect(() => {
     const periodicSave = setInterval(() => {
@@ -53,22 +45,6 @@ export function App() {
 
         return (
           <>
-            <form
-          class="row"
-              onSubmit={(e) => {
-                e.preventDefault();
-                greet();
-              }}
-            >
-              <input
-                id="greet-input"
-                onInput={(e) => setName(e.currentTarget.value)}
-                placeholder="Enter a name..."
-              />
-              <button type="submit">Greet</button>
-            </form>
-
-            <p>{greetMsg}</p>
             <img src={logo} class="logo" alt="logo" />
             <Reps exercises={appState.exercises}/>
             <br/>
