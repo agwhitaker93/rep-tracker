@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      #- name: Install tools
-      #  uses: asdf-vm/actions/install@v2
+      - name: Install tools
+        uses: asdf-vm/actions/install@v2
       - name: Install bun dependencies
         run: bun install
       - name: Install Ubuntu-specific Dependencies
